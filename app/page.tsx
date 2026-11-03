@@ -53,23 +53,14 @@ export default async function HomePage({
         }
       : null;
   const response = search ? searchListings(search) : null;
-  const apiQuery = new URLSearchParams();
-  if (submitted) {
-    if (queryText) apiQuery.set("query", queryText);
-    if (destination) apiQuery.set("destination", destination);
-    if (adultsRaw) apiQuery.set("adults", adultsRaw);
-    if (childrenRaw) apiQuery.set("children", childrenRaw);
-  }
-  const apiHref = apiQuery.size ? `/api/search?${apiQuery.toString()}` : "/api/search";
 
   return (
     <main className="page">
       <header>
-        <h1>UTCP search demo</h1>
+        <h1>Vacation stays</h1>
         <p>
-          A public manual for a mock vacation search. Agents read <code>GET /utcp</code>,
-          then call <code>GET /api/search</code> directly. There is no account, token, or
-          sign-in on any route.
+          A short catalog of places to stay. Search by what you want and where you are
+          going, then see which stays fit your group.
         </p>
       </header>
 
@@ -111,9 +102,6 @@ export default async function HomePage({
           <h2>
             {response.count} listing{response.count === 1 ? "" : "s"}
           </h2>
-          <p className="meta">
-            Same parameters as JSON: <a href={apiHref}>{apiHref}</a>
-          </p>
           <div className="results">
             {response.results.map((listing) => (
               <article key={listing.id} className="result">
@@ -129,33 +117,6 @@ export default async function HomePage({
           </div>
         </>
       ) : null}
-
-      <h2>Endpoints</h2>
-      <section className="endpoints">
-        <div>
-          <p>
-            <a href="/utcp">GET /utcp</a>
-          </p>
-          <p className="meta">
-            UTCP manual (<code>application/json</code>). The tool URL is{" "}
-            <code>https://</code> plus this request&apos;s host plus <code>/api/search</code>.
-          </p>
-        </div>
-        <div>
-          <p>
-            <a href="/api/search?query=beach&destination=Greece&adults=2&children=1">
-              GET /api/search?query=beach&amp;destination=Greece&amp;adults=2&amp;children=1
-            </a>
-          </p>
-          <p className="meta">
-            Mock listings. <code>query</code> and <code>destination</code> are strings.{" "}
-            <code>adults</code> and <code>children</code> are numbers. Omit a parameter to skip
-            that filter.
-          </p>
-        </div>
-        <pre>{`curl -s "$ORIGIN/utcp"
-curl -s "$ORIGIN/api/search?query=beach&destination=Greece&adults=2&children=1"`}</pre>
-      </section>
     </main>
   );
 }

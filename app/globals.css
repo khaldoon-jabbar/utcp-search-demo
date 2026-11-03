@@ -52,7 +52,6 @@ h2 {
   margin: 2.25rem 0 0.6rem;
 }
 
-section,
 form,
 .result {
   background: var(--card);
@@ -117,23 +116,6 @@ button {
 .meta {
   color: var(--muted);
   font-size: 0.95rem;
-}
-
-.endpoints {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.endpoints p {
-  margin: 0.2rem 0;
-}
-
-pre {
-  overflow-x: auto;
-  padding: 0.75rem;
-  background: #f3efe7;
-  border-radius: 8px;
-  font-size: 0.85rem;
 }
 
 .error {
