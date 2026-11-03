@@ -6,6 +6,14 @@ There is no authentication. Every route is public.
 
 ## Endpoints
 
+### `GET /llms.txt`
+
+Plain-text guide for agents. It points them at the UTCP manual and the search example. It does not describe an MCP server.
+
+```bash
+curl -s "$ORIGIN/llms.txt"
+```
+
 ### `GET /utcp`
 
 Returns a UTCP manual (`Content-Type: application/json`) with one tool, `search_listings`.

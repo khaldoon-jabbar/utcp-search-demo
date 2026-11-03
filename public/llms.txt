@@ -1,0 +1,26 @@
+# UTCP Search Demo
+
+> Public mock vacation search. Tools are exposed with UTCP (Universal Tool Calling Protocol), not MCP. No authentication.
+
+Discover tools by fetching `GET https://utcp-search-demo.vercel.app/utcp`. That response is the UTCP manual JSON (`manual_version` 1.0.0, `utcp_version` 1.0.1). Do not invent tools. Use only the tools listed in that manual.
+
+The tool is `search_listings`, a mock vacation and travel search. Call it with HTTP GET exactly as the manual's `tool_call_template` describes. The inputs are query-string parameters: `query`, `adults`, `children`, and `destination`. No API key, cookie, or sign-in is required.
+
+The homepage is a human UI for the same mock catalog. `/utcp` is the machine entry point.
+
+## UTCP
+
+- [UTCP manual](https://utcp-search-demo.vercel.app/utcp): Discovery document. Read `tools` and call each tool only as its `tool_call_template` says.
+
+## Search
+
+- [Search API example](https://utcp-search-demo.vercel.app/api/search?query=beach&destination=Greece&adults=2&children=1): Example `search_listings` call. `query` and `destination` are strings. `adults` and `children` are numbers.
+
+## Site
+
+- [Homepage](https://utcp-search-demo.vercel.app/): Human page for the same mock catalog. Start at the UTCP manual, not this page.
+
+## Optional
+
+- [Repository](https://github.com/khaldoon-jabbar/utcp-search-demo): Source for this demo.
+- [UTCP](https://utcp.io/): Universal Tool Calling Protocol.
